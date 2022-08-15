@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 public class Juego {
     private Tablero tablero = new Tablero();
-    private Jugador jugadorUno;
-    private Jugador jugadorDos;
+    private Jugador jugadorUno = new Jugador();
+    private Jugador jugadorDos = new Jugador();
+
+    private ArrayList<Jugador> jugadores;
 
     public Juego() {
     }
@@ -37,15 +39,14 @@ public class Juego {
 
     public void IniciaJuego(){
         Scanner entrada = new Scanner(System.in);
-        int turno =1;
+        int turno=0;
         int posicion;
-        boolean ganaJuego = false;
+        int bandera=1;
+        boolean gana=false;
         boolean validaCeldaOcupada = true;
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-        jugadores.add(jugadorUno);
-        jugadores.add(jugadorDos);
+        jugadores = ImprimeNombreArraySimbolosYNombre();
+        System.out.println(jugadores.toString());
 
-        System.out.println("Ingrese");
 
 
     }
@@ -71,8 +72,27 @@ public class Juego {
     public String asignaNombreJugadores(Jugador jugador, int posicion){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese su nombre Jugador: " + (posicion + 1));
-        String nombre = "prueba" + posicion;
+        String nombre = entrada.nextLine();
         return nombre;
+    }
+    public ArrayList<Jugador> ImprimeNombreArraySimbolosYNombre(){
+        Juego juego = new Juego();
+
+        ArrayList<Jugador> jugadores1 = new ArrayList<>();
+        jugadores1.add(jugadorUno);
+        jugadores1.add(jugadorDos);
+
+        for (int i = 0; i < jugadores1.size(); i++) {
+            String nombre = juego.asignaNombreJugadores(jugadores1.get(i),i);
+            jugadores1.get(i).setNombre(nombre);
+            jugadores1.get(i).setCaracter(jugadores1.get(i).assignaCaracter(i + 1));
+
+        }
+
+
+        return jugadores1;
+
+
     }
 
 
