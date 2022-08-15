@@ -8,7 +8,7 @@ public class JugadorTest {
     @Test
     public void imprimeDatosJugador(){
         Jugador jugador = new Jugador("Eduardo");
-        jugador.setCaracter(jugador.assignaCaracter(10));
+        jugador.setCaracter(jugador.assignaCaracter(1));
         System.out.println(jugador);
 
 
@@ -19,7 +19,7 @@ public class JugadorTest {
     @Test
     public void validaValor(){
         Jugador jugador = new Jugador("Eduardo");
-        int contador = 10;
+        int contador = 1;
         boolean cerradura = false;
 
         do {
